@@ -14,7 +14,7 @@ test.fixme("should display a loading spinner while fetching search results", () 
 	// TODO:
 });
 
-test.fixme("should display an error when fetching search results failed", async ({ page }) => {
+test.fixme("should display an error when fetching search results failed", () => {
 	// TODO:
 });
 
