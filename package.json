@@ -7,7 +7,8 @@
 		"build": "nuxt build",
 		"dev": "nuxt dev",
 		"postinstall": "nuxt prepare",
-		"start": "nuxt preview"
+		"start": "nuxt preview",
+		"test:e2e": "playwright test"
 	},
 	"dependencies": {
 		"@acdh-oeaw/lib": "^0.1.7",
