@@ -26,7 +26,7 @@ const { data, isPending, isPlaceholderData, error } = useQuery(getCatsByKind(kin
 		</h2>
 
 		<span aria-live="polite" role="status">
-			<template v-if="!isPlaceholderData">
+			<template v-if="isPending">
 				<span class="sr-only">loading...</span>
 				<Loader2Icon  aria-hidden="true" class="size-8 animate-spin" />
 			</template>
