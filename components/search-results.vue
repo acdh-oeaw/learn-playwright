@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useQuery } from "@tanstack/vue-query";
-import { Loader2Icon } from "lucide-vue-next";
 
 import { getCatsByKind } from "@/lib/api";
+import LoadingSpinner from "./loading-spinner.vue";
 
 const props = defineProps<{
 	kinds: Array<string>;
@@ -17,20 +17,10 @@ const { data, isPending, isPlaceholderData, error } = useQuery(getCatsByKind(kin
 	<section class="grid gap-4">
 		<h2 class="flex gap-2 items-center">
 			Results
-			<span aria-live="polite" role="status">
-				<template v-if="isPlaceholderData">
-					<span class="sr-only">loading...</span>
-					<Loader2Icon aria-hidden="true" class="size-4 animate-spin" />
-				</template>
-			</span>
+			<LoadingSpinner v-if="isPlaceholderData" />
 		</h2>
 
-		<span aria-live="polite" role="status">
-			<template v-if="isPending">
-				<span class="sr-only">loading...</span>
-				<Loader2Icon  aria-hidden="true" class="size-8 animate-spin" />
-			</template>
-		</span>
+		<LoadingSpinner v-if="isPending" />
 
 		<div v-if="error != null">{{ String(error) }}</div>
 
@@ -39,5 +29,9 @@ const { data, isPending, isPlaceholderData, error } = useQuery(getCatsByKind(kin
 				<div>{{ result.name }} ({{ result.kind }})</div>
 			</li>
 		</ul>
+
+		<div aria-live="polite" class="sr-only">
+			<template v-if="isPending || isPlaceholderData">loading...</template>
+		</div>
 	</section>
 </template>
