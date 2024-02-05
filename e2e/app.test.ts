@@ -31,5 +31,5 @@ test.fixme("should have a favicon", () => {
 });
 
 test.fixme("should have schema.org metadata", () => {
-	// TODO: test if page includes a `<script type="application/json+ld">` with metadata
+	// TODO: test if page includes a `<script type="application/ld+json">` with metadata
 });
